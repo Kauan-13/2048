@@ -1,0 +1,14 @@
+.table {
+    border: 2px solid black;
+}
+
+.table > tbody > tr {
+    border: 1px solid black;
+    height: 100px;
+}
+
+.table > tbody > tr > td {
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+}
