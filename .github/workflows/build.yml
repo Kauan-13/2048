@@ -18,13 +18,19 @@ jobs:
         with:
           node-version: '20.19'
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Build 2048-app
-        run: |
-          npm ci
-          npm run build
+        run: npm run build
+
+      - name: Verify output
+        run: ls -R .
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: gh-pages
+          enable_jekyll: false
