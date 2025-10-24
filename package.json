@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "2048/",
+  "homepage": "https://kauan-13.github.io/2048",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
