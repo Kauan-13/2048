@@ -9,28 +9,25 @@ interface Props {
 
 const Board = ({ board, move }: Props) => {
 
-    console.log(board);
-
     useEffect(() => {
-        const handleKeyDown = (event: { key: string; }) => {
+        const handleKeyDown = (event: { code: string; }) => {
             
-            if (event.key === 'ArrowUp') {
+            if (event.code === 'ArrowUp' || event.code === 'KeyW') {
                 move("Up");
             }
-            if (event.key === 'ArrowDown') {
+            if (event.code === 'ArrowDown' || event.code === 'KeyS') {
                 move("Down");
             }
-            if (event.key === 'ArrowRight') {
+            if (event.code === 'ArrowRight' || event.code === 'KeyD') {
                 move("Right");
             }
-            if (event.key === 'ArrowLeft') {
+            if (event.code === 'ArrowLeft' || event.code === 'KeyA') {
                 move("Left");
             }
         };
 
         document.addEventListener('keydown', handleKeyDown);
 
-            // Função de limpeza para remover o ouvinte de evento quando o componente desmontar
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
@@ -39,34 +36,15 @@ const Board = ({ board, move }: Props) => {
     return (
         <table className={style.table}>
             <tbody>
-                <tr>
-                    {
-                        board[0].map((cell, i) => (
-                            cell == 0 ? <td key={i}></td> : <td key={i}> <Block value={cell}/> </td>   
-                        ))
-                    }
-                </tr>
-                <tr>
-                    {
-                        board[1].map((cell, i) => (
-                            cell == 0 ? <td key={i}></td> : <td key={i}> <Block value={cell}/> </td>   
-                        ))
-                    }
-                </tr>
-                <tr>
-                    {
-                        board[2].map((cell, i) => (
-                            cell == 0 ? <td key={i}></td> : <td key={i}> <Block value={cell}/> </td>   
-                        ))
-                    }
-                </tr>
-                <tr>
-                    {
-                        board[3].map((cell, i) => (
-                            cell == 0 ? <td key={i}></td> : <td key={i}> <Block value={cell}/> </td>   
-                        ))
-                    }
-                </tr>
+                {
+                    board.map((row, i) => (
+                        <tr key={i}>
+                            {row.map((cell, i) => (
+                                cell == 0 ? <td key={i}></td> : <td key={i}> <Block value={cell}/> </td>
+                            ))}
+                        </tr>
+                    ))
+                }
             </tbody>
         </table>
     )

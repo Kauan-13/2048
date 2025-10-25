@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Block = ({value}: Props) => {
-    return <div className={style.block}> {value} </div>
+    return <div className={`${style.block} ${style[`color-${value}`]}`}> {value} </div>
 }
 
 export default Block

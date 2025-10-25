@@ -1,7 +1,8 @@
 .block {
     height: 100%;
     width: 100%;
-    background-color: cadetblue;
+    background: #CDC1B4;
+    color: #776e65;
 
     display: flex;
     justify-content: center;
@@ -9,3 +10,30 @@
 
     font-size: 32px;
 }
+
+.color-2    { background: #F6F2EA; color: #3A3A3A; }
+.color-4    { background: #EEE3C9; color: #3A3A3A; }
+
+/* A partir do 8 – texto sempre branco */
+.color-8    { background: #FFB347; color: #FFFFFF; }
+.color-16   { background: #FF964F; color: #FFFFFF; }
+.color-32   { background: #FF784F; color: #FFFFFF; }
+.color-64   { background: #FF5A4F; color: #FFFFFF; }
+
+/* Amarelos mais ricos – com branco */
+.color-128  { background: #E5D361; color: #FFFFFF; }
+.color-256  { background: #D8C552; color: #FFFFFF; }
+.color-512  { background: #C9B845; color: #FFFFFF; }
+.color-1024 { background: #BCAA38; color: #FFFFFF; }
+.color-2048 { background: #AE9D2A; color: #FFFFFF; }
+
+/* A partir daqui – tons escuros para contraste total */
+.color-4096    { background: #6E6257; color: #FFFFFF; }
+.color-8192    { background: #5A4E45; color: #FFFFFF; }
+.color-16384   { background: #4A3F37; color: #FFFFFF; }
+.color-32768   { background: #3A2F28; color: #FFFFFF; }
+.color-65536   { background: #2B211C; color: #FFFFFF; }
+.color-131072  { background: #1E1613; color: #FFFFFF; }
+.color-262144  { background: #140F0C; color: #FFFFFF; }
+.color-524288  { background: #0D0908; color: #FFFFFF; }
+.color-1048576 { background: #070505; color: #FFFFFF; }

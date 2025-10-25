@@ -6,6 +6,8 @@ const initBoard = () => {
         [0,0,0,0],
     ]
     
+    board = createNumber(board);
+
     return createNumber(board);
 }
 
@@ -27,8 +29,10 @@ const moveUp = (prev: number[][]) => {
         newBoard.map((row, j) => row[i] = newCol[j]);
     }
 
-    newBoard = createNumber(newBoard);
-
+    if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
+        newBoard = createNumber(newBoard);
+    }
+    
     return newBoard;
 }
 
@@ -50,7 +54,9 @@ const moveDown = (prev: number[][]) => {
         newBoard.map((row, j) => row[i] = newCol[j]);
     }
 
-    newBoard = createNumber(newBoard);
+    if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
+        newBoard = createNumber(newBoard);
+    }
 
     return newBoard;
 }
@@ -71,7 +77,9 @@ const moveRight = (prev: number[][]) => {
         newBoard[i] = newRow;
     })
 
-    newBoard = createNumber(newBoard);
+    if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
+        newBoard = createNumber(newBoard);
+    }
 
     return newBoard;
 }
@@ -92,7 +100,9 @@ const moveLeft = (prev: number[][]) => {
         newBoard[i] = newRow;
     })
 
-    newBoard = createNumber(newBoard);
+    if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
+        newBoard = createNumber(newBoard);
+    }
 
     return newBoard;
 }

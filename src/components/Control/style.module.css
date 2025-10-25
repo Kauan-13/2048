@@ -1,0 +1,46 @@
+.control {
+    height: 300px;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.button {
+    height: 100px;
+    width: 100px;
+
+    background-color: #8F7A66;
+    border: none;
+    border: 5px solid #7B6B5A;
+    border-radius: 20px;
+
+    font-size: 30px;
+    color: #FAF8EF;
+
+    -webkit-box-shadow: 2px 5px 4px 3px #615447; 
+    box-shadow: 2px 5px 4px 3px #615447;
+}
+
+.button:active {
+    background-color: #A39487;
+    -webkit-box-shadow: 2px 5px 4px 3px #615447 inset; 
+    box-shadow: 2px 5px 4px 3px #615447 inset;
+}
+
+.controlCenter {
+    display: flex;
+    align-items: center;
+}
+
+.buttonCenter {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.buttonCenter:active {
+    background-color: transparent;
+}
