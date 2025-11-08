@@ -10,7 +10,7 @@ Um jogo classico feito com `React` + `Typescript`.
 
 ---
 
-## 🧩 Regras do Jogo
+## Regras do Jogo
 
 - Use as setas do teclado ou as teclas `W`, `A`, `S`, `D` para mover os blocos.  
 - Combine blocos de mesmo número até criar o bloco 2048
@@ -20,7 +20,7 @@ Um jogo classico feito com `React` + `Typescript`.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **React** — Interface dinâmica e reativa  
 - **CSS Modules** — Estilos isolados e limpos  
