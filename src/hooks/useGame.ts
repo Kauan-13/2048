@@ -22,9 +22,14 @@ const useGame = () => {
         }   
     }
 
+    const restart = () => {
+        setBoard(initBoard());
+    }
+
     return {
         board,
         move,
+        restart,
     }
 }
 

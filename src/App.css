@@ -1,22 +1,71 @@
 main {
+    position: relative;
     width: 100vw;
     height: 100vh;
 
     display: flex;
-    flex-direction: column;
 
     align-items: center;
     justify-content: space-around;
+    gap: 20px;
 
     background-color: #FAF8EF;
+}
+
+.game {
+    position: relative;
+
+    height: 100vh;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    /* background-color: black; */
+}
+
+.tutorial {
+    height: 100vh;
+    width: 60vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .control {
     display: none;
 }
 
+footer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+
+    width: calc(100vw - 20px);
+    height: fit-content;
+    bottom: 0;
+
+    font-size: 40px;
+    padding: 10px;
+}
+
+footer > a {
+    color: black;
+    margin-bottom: -10px;
+}
+
 @media (max-width: 1023px) {
     .control {
         display: block;
+    }
+
+    .tutorial {
+        z-index: 2;
+        position: absolute;
+        width: 100vw;
     }
 }

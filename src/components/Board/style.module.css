@@ -17,7 +17,96 @@
     padding: 2px;
 }
 
-@media (max-width: 430px) {
+.popupLose {
+    z-index: 2;
+    position: absolute;
+    max-width: 400px;
+    min-width: 350px;
+
+    height: 25vh;
+    
+
+    width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    
+    gap: 10%;
+
+    background-color: #f76c5e;
+    color: #fff;
+
+    font-size: 30px;
+
+    border-radius: 20px;
+}
+ 
+.icon {
+    font-size: 25px;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 35px;
+}
+
+.restartButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background-color: #f76c5e;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(247, 108, 94, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.restartButton:hover {
+    background-color: #ff8b7d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(247, 108, 94, 0.5);
+}
+
+.restartButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(247, 108, 94, 0.4);
+}
+
+.restartButtonAlone {
+    margin: -10px;
+}
+
+.background {
+    left: 0;
+    z-index: 1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+@media (max-width: 1023px) {
+    .restartButton {
+        font-size: 1rem;
+        background-color: #ff8b7d;
+        width: 80%;
+        max-width: 280px;
+        padding: 1rem 0;
+        border-radius: 14px;
+        box-shadow: 0 3px 8px rgba(247, 108, 94, 0.25);
+    }
+
     .table > tbody > tr {
         height: 80px;
     }
@@ -25,5 +114,27 @@
     .table > tbody > tr > td {
         height: 80px;
         width: 80px; 
+    }
+}
+
+@media (max-width: 400px) {
+    .restartButton {
+        font-size: 1rem;
+        background-color: #ff8b7d;
+        width: 50%;
+        height: 40px;
+        max-width: 280px;
+        padding: 1rem 0;
+        border-radius: 14px;
+        box-shadow: 0 3px 8px rgba(247, 108, 94, 0.25);
+    }
+
+    .table > tbody > tr {
+        height: 60px;
+    }
+
+    .table > tbody > tr > td {
+        height: 60px;
+        width: 60px; 
     }
 }

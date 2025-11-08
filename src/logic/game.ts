@@ -1,24 +1,39 @@
-const initBoard = () => {
-    let board: number[][] = [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-    ]
-    
-    board = createNumber(board);
+import type { BoardProps } from "../types/board";
 
-    return createNumber(board);
+const initBoard = () => {
+    let board: BoardProps = {
+        blocks: [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+        ],
+        isGameOver: false,
+    }
+    board.blocks = createNumber(board.blocks);
+    board.blocks = createNumber(board.blocks);
+
+    return board;
 }
 
-const moveUp = (prev: number[][]) => {
+const moveUp = (prev: BoardProps) => {
+    if (prev.isGameOver) {
+        return prev;    
+    }
+
     console.log("Entrada Up: ");
     console.log(prev);
 
-    let newBoard = prev.map(row => [...row]);
+    let newBoard: BoardProps = {
+        blocks: [],
+        isGameOver: false,
+    };
 
-    for (let i = 0; i < newBoard.length; i++) {
-        let newCol = newBoard.map(row => row[i]);
+    newBoard.blocks = prev.blocks.map(row => [...row]);
+    newBoard.isGameOver = prev.isGameOver;
+
+    for (let i = 0; i < newBoard.blocks.length; i++) {
+        let newCol = newBoard.blocks.map(row => row[i]);
         newCol = newCol.filter(cell => cell != 0);
         newCol = merge(newCol, false);
         newCol = newCol.filter(cell => cell != 0);
@@ -26,24 +41,36 @@ const moveUp = (prev: number[][]) => {
             newCol.push(0);
         }
 
-        newBoard.map((row, j) => row[i] = newCol[j]);
+        newBoard.blocks.map((row, j) => row[i] = newCol[j]);
     }
 
     if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
-        newBoard = createNumber(newBoard);
-    }
+        newBoard.blocks = createNumber(newBoard.blocks);
+    } 
+    
+    newBoard.isGameOver = isGameOver(newBoard.blocks);
     
     return newBoard;
 }
 
-const moveDown = (prev: number[][]) => {
+const moveDown = (prev: BoardProps) => {
+    if (prev.isGameOver) {
+        return prev;    
+    }
+
     console.log("Entrada Down: ");
     console.log(prev);
 
-    let newBoard = prev.map(row => [...row]);
+    let newBoard: BoardProps = {
+        blocks: [],
+        isGameOver: false,
+    };
 
-    for (let i = 0; i < newBoard.length; i++) {
-        let newCol = newBoard.map(row => row[i]);
+    newBoard.blocks = prev.blocks.map(row => [...row]);
+    newBoard.isGameOver = prev.isGameOver;
+
+    for (let i = 0; i < newBoard.blocks.length; i++) {
+        let newCol = newBoard.blocks.map(row => row[i]);
         newCol = newCol.filter(cell => cell != 0);
         newCol = merge(newCol, true);
         newCol = newCol.filter(cell => cell != 0);
@@ -51,58 +78,81 @@ const moveDown = (prev: number[][]) => {
             newCol.unshift(0);
         }
 
-        newBoard.map((row, j) => row[i] = newCol[j]);
+        newBoard.blocks.map((row, j) => row[i] = newCol[j]);
     }
 
     if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
-        newBoard = createNumber(newBoard);
-    }
+        newBoard.blocks = createNumber(newBoard.blocks);
+    } 
+    
+    newBoard.isGameOver = isGameOver(newBoard.blocks);
 
     return newBoard;
 }
 
-const moveRight = (prev: number[][]) => {
+const moveRight = (prev: BoardProps) => {
+    if (prev.isGameOver) {
+        return prev;    
+    }
+
     console.log("Entrada Right: ");
     console.log(prev);
 
-    let newBoard = prev.map(row => [...row]);
+   let newBoard: BoardProps = {
+        blocks: [],
+        isGameOver: false,
+    };
 
-    newBoard.map((row, i) => {
+    newBoard.blocks = prev.blocks.map(row => [...row]);
+    newBoard.isGameOver = prev.isGameOver;
+
+    newBoard.blocks.map((row, i) => {
         let newRow = row.filter(cell => cell != 0);
         newRow = merge(newRow, true);
         newRow = newRow.filter(cell => cell != 0);
         while(newRow.length < 4) {
             newRow.unshift(0);
         }
-        newBoard[i] = newRow;
+        newBoard.blocks[i] = newRow;
     })
 
     if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
-        newBoard = createNumber(newBoard);
-    }
-
+        newBoard.blocks = createNumber(newBoard.blocks);
+    } 
+        
+    newBoard.isGameOver = isGameOver(newBoard.blocks);
+    
     return newBoard;
 }
 
-const moveLeft = (prev: number[][]) => {
-    console.log("Entrada Left: ");
-    console.log(prev);
+const moveLeft = (prev: BoardProps) => {
+    if (prev.isGameOver) {
+        return prev;    
+    }
 
-    let newBoard = prev.map(row => [...row]);
+    let newBoard: BoardProps = {
+        blocks: [],
+        isGameOver: false,
+    };
 
-    newBoard.map((row, i) => {
+    newBoard.blocks = prev.blocks.map(row => [...row]);
+    newBoard.isGameOver = prev.isGameOver;
+
+    newBoard.blocks.map((row, i) => {
         let newRow = row.filter(cell => cell != 0);
         newRow = merge(newRow, false);
         newRow = newRow.filter(cell => cell != 0);
         while(newRow.length < 4) {
             newRow.push(0);
         }
-        newBoard[i] = newRow;
+        newBoard.blocks[i] = newRow;
     })
 
     if (JSON.stringify(prev) !== JSON.stringify(newBoard)) {
-        newBoard = createNumber(newBoard);
-    }
+        newBoard.blocks = createNumber(newBoard.blocks);
+    } 
+        
+    newBoard.isGameOver = isGameOver(newBoard.blocks);
 
     return newBoard;
 }
@@ -149,6 +199,73 @@ const createNumber = (prev: number[][]) => {
     }
 
     return newNumbers;
+}
+
+const isGameOver = (prev: number[][]): boolean => {
+    let newNumbers = [...prev];
+    
+    if (newNumbers.flat().includes(0)) {
+        console.log("false tem 0");
+        return false;
+    }
+
+    for (let i = 0; i < newNumbers.length; i++) {
+        let colAux = newNumbers.map(row => row[i]);
+
+        let newColUp = newNumbers.map(row => row[i]);
+        let newColDown = newNumbers.map(row => row[i]);
+
+        newColUp = newColUp.filter(cell => cell != 0);
+        newColUp = merge(newColUp, false);
+        newColUp = newColUp.filter(cell => cell != 0);
+
+        newColDown = newColDown.filter(cell => cell != 0);
+        newColDown = merge(newColDown, true);
+        newColDown = newColDown.filter(cell => cell != 0);
+
+
+        while (newColUp.length < 4) {
+            newColUp.push(0);
+        }
+
+        while (newColDown.length < 4) {
+            newColDown.unshift(0);
+        }
+
+        if (JSON.stringify(newColUp) !== JSON.stringify(colAux) || JSON.stringify(newColDown) !== JSON.stringify(colAux)) {
+            console.log("false coluna merge");
+            console.log("controle: " + colAux);
+            console.log("nova up: " + newColUp);
+            console.log("nova down: " + newColDown);
+            return false;
+        }
+    }
+
+
+    for (let row of newNumbers) {
+        let rowAux = row.filter(cell => cell != 0);
+
+        let newRowRight = row.filter(cell => cell != 0);
+        let newRowLeft = row.filter(cell => cell != 0);
+
+        newRowRight = merge(newRowRight, true);
+        newRowRight = newRowRight.filter(cell => cell != 0);
+
+        newRowLeft = merge(newRowLeft, false);
+        newRowLeft = newRowLeft.filter(cell => cell != 0);
+
+        while (newRowRight.length < 4) newRowRight.unshift(0);
+        while (newRowLeft.length < 4) newRowLeft.push(0);
+
+        if (JSON.stringify(newRowRight) !== JSON.stringify(rowAux) ||
+            JSON.stringify(newRowLeft) !== JSON.stringify(rowAux)) {
+            console.log("false linha merge");
+            return false;
+        }
+    }
+
+    console.log("true");
+    return true;
 }
 
 export { initBoard, moveUp, moveDown, moveRight, moveLeft }

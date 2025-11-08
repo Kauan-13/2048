@@ -13,7 +13,7 @@ const Control = ({move}: Props) => {
             </div>
             <div className={style.controlCenter}>
                 <button className={style.button} onClick={() => move("Left")}><FaArrowLeft /></button>
-                <button className={`${style.button} ${style.buttonCenter}`} disabled></button>
+                {/* <button className={`${style.button} ${style.buttonCenter}`} disabled></button> */}
                 <button className={style.button} onClick={() => move("Right")}><FaArrowRight /></button>
             </div>
             <div>

@@ -1,0 +1,72 @@
+.tutorial {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+    padding: 100px;
+}
+
+.tutorial > h2 {
+    text-align: center;
+}
+
+.tutorial > div {
+    width: 100%;
+}
+
+.tutorial > div > img {
+    margin-top: 20px;
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 150px;
+
+    background-color: #f76c5e;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(247, 108, 94, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.closeButton:hover {
+    background-color: #ff8b7d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(247, 108, 94, 0.5);
+}
+
+.closeButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(247, 108, 94, 0.4);
+}
+
+.closeIcon {
+    font-size: 35px;
+}
+
+@media (max-width: 1023px) {
+    .controllers {
+        display: none;
+    }
+
+    .tutorial {
+        padding: 20px;
+        margin: 20px;
+        background-color: #e6d8b9;
+        border-radius: 20px;
+    }   
+}

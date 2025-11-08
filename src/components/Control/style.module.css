@@ -33,14 +33,16 @@
 .controlCenter {
     display: flex;
     align-items: center;
-}
-
-.buttonCenter {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
+    gap: 100px;
 }
 
 .buttonCenter:active {
     background-color: transparent;
+}
+
+@media (max-width: 400px) {
+    .button {
+        height: 80px;
+        width: 80px;
+    }
 }
