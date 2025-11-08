@@ -37,6 +37,7 @@ main {
 }
 
 .control {
+    z-index: 2;
     display: none;
 }
 
@@ -64,7 +65,7 @@ footer > a {
     }
 
     .tutorial {
-        z-index: 2;
+        z-index: 3;
         position: absolute;
         width: 100vw;
     }
